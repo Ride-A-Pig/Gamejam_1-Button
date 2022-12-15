@@ -1,0 +1,167 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/BG_WinXP.png" type="Texture" id=1]
+[ext_resource path="res://src/Icon_Chrome.png" type="Texture" id=2]
+[ext_resource path="res://src/Theme/Default_Theme.tres" type="Theme" id=3]
+[ext_resource path="res://Scenes/Scripts/Script_Main.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Popups/Intro.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/SFX/SFX_Popup.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/Popups/NoYes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Popups/YesNo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Popups/ProgressBar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Popups/AccurateBar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Popups/TurnOff.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Fonts/Minecraftia-Regular.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.494118, 0.643137, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 12 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="TimeLable" type="Label" parent="."]
+anchor_left = 0.844
+anchor_top = 0.898
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.0480042
+margin_top = 0.0159912
+theme = ExtResource( 3 )
+custom_styles/normal = SubResource( 1 )
+text = "00:00"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="TimeLable"]
+
+[node name="Chrome" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 18.0
+margin_bottom = 18.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+mix_target = 1
+
+[node name="PopupLayer" type="Node2D" parent="."]
+
+[node name="TurnOff" parent="PopupLayer" instance=ExtResource( 11 )]
+position = Vector2( 50, 28 )
+
+[node name="YesNo5" parent="PopupLayer" instance=ExtResource( 8 )]
+position = Vector2( 29, 34 )
+next_window_path = NodePath("../TurnOff")
+
+[node name="ProgressBar" parent="PopupLayer" instance=ExtResource( 9 )]
+position = Vector2( 29, 34 )
+next_window_path = NodePath("../YesNo5")
+
+[node name="AccurateBar" parent="PopupLayer" instance=ExtResource( 10 )]
+position = Vector2( 66, 11 )
+next_window_path = NodePath("../ProgressBar")
+
+[node name="Intro" parent="PopupLayer" instance=ExtResource( 5 )]
+position = Vector2( 11, 1 )
+next_window_path = NodePath("../AccurateBar")
+
+[node name="YesNo" parent="PopupLayer" instance=ExtResource( 8 )]
+position = Vector2( 82, 49 )
+next_window_path = NodePath("../Intro")
+
+[node name="Intro2" parent="PopupLayer" instance=ExtResource( 5 )]
+position = Vector2( 59, 32 )
+next_window_path = NodePath("../YesNo")
+
+[node name="YesNo2" parent="PopupLayer" instance=ExtResource( 8 )]
+position = Vector2( 22, 37 )
+next_window_path = NodePath("../Intro2")
+
+[node name="NoYes" parent="PopupLayer" instance=ExtResource( 7 )]
+position = Vector2( 90, 6 )
+next_window_path = NodePath("../YesNo2")
+
+[node name="AccurateBar2" parent="PopupLayer" instance=ExtResource( 10 )]
+position = Vector2( 36, 25 )
+next_window_path = NodePath("../NoYes")
+
+[node name="Intro3" parent="PopupLayer" instance=ExtResource( 5 )]
+position = Vector2( 76, 44 )
+next_window_path = NodePath("../AccurateBar2")
+
+[node name="NoYes2" parent="PopupLayer" instance=ExtResource( 7 )]
+position = Vector2( 8, 19 )
+next_window_path = NodePath("../Intro3")
+
+[node name="YesNo3" parent="PopupLayer" instance=ExtResource( 8 )]
+position = Vector2( 59, 22 )
+next_window_path = NodePath("../NoYes2")
+
+[node name="ProgressBar2" parent="PopupLayer" instance=ExtResource( 9 )]
+position = Vector2( 8, 51 )
+next_window_path = NodePath("../YesNo3")
+
+[node name="NoYes4" parent="PopupLayer" instance=ExtResource( 7 )]
+position = Vector2( 46, 30 )
+next_window_path = NodePath("../ProgressBar2")
+
+[node name="Intro4" parent="PopupLayer" instance=ExtResource( 5 )]
+position = Vector2( 75, 68 )
+next_window_path = NodePath("../NoYes4")
+
+[node name="AccurateBar3" parent="PopupLayer" instance=ExtResource( 10 )]
+position = Vector2( 48, 35 )
+next_window_path = NodePath("../Intro4")
+
+[node name="YesNo4" parent="PopupLayer" instance=ExtResource( 8 )]
+position = Vector2( 97, 26 )
+next_window_path = NodePath("../AccurateBar3")
+
+[node name="Intro5" parent="PopupLayer" instance=ExtResource( 5 )]
+position = Vector2( 62, 34 )
+next_window_path = NodePath("../YesNo4")
+
+[node name="NoYes3" parent="PopupLayer" instance=ExtResource( 7 )]
+position = Vector2( 31, 46 )
+next_window_path = NodePath("../Intro5")
+
+[node name="AccurateBar4" parent="PopupLayer" instance=ExtResource( 10 )]
+position = Vector2( 40, 36 )
+next_window_path = NodePath("../NoYes3")
+
+[node name="Intro6" parent="PopupLayer" instance=ExtResource( 5 )]
+position = Vector2( 55, 47 )
+next_window_path = NodePath("../AccurateBar4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.760784 )
+
+[node name="Label" type="RichTextLabel" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]What Happend?
+I have to close them with 
+[color=red]Spacebar[/color][/center]"
+text = "What Happend?
+I have to close them with 
+Spacebar"
+
+[connection signal="timeout" from="TimeLable/Timer" to="." method="_on_Timer_timeout"]

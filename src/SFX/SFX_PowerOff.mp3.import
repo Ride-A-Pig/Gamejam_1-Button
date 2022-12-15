@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SFX_PowerOff.mp3-173b72145731c6aa4099a7e40eb6b9f8.mp3str"
+
+[deps]
+
+source_file="res://src/SFX/SFX_PowerOff.mp3"
+dest_files=[ "res://.import/SFX_PowerOff.mp3-173b72145731c6aa4099a7e40eb6b9f8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
