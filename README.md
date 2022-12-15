@@ -1,6 +1,6 @@
 # 1-Button Game Jam
 
-Game Name: Popups
+Game Name: [Popups](https://itch.io/jam/1-button-jam-2022/rate/1800846)
 
 Tools: [Godot](https://godotengine.org/en)/Aseprite
 
